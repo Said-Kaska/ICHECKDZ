@@ -19,24 +19,20 @@ const LoginPage = () => {
 
     // Basic client-side validation
     if (!formData.email || !formData.password) {
-      setErrors({ general: 'Please enter both email and password.' });
+      setErrors({ general: 'يرجى إدخال البريد وكلمة المرور.' });
       setIsLoading(false);
-      return; // Stop function execution if validation fails
+      return;
     }
 
-    // This is currently a fake login delay to simulate an API call.
-    // In a real application, you would replace this `setTimeout`
-    // with your actual authentication API call (e.g., fetch, axios, or a Supabase/Firebase auth method).
+    // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-        router.push('/dashboard'); // غيّرها حسب اسم صفحتك بعد الدخول
-}, 1000);
 
       // Simulate successful login
-      navigate('/profile');
+      navigate('/profile'); // ✅ هنا التنقل بعد الدخول الناجح
 
-      // To simulate a failed login, you could uncomment the line below and comment out the navigate line:
-      // setErrors({ general: 'Invalid email or password.' });
+      // إذا حبيت تحاكي فشل الدخول بدلًا من النجاح:
+      // setErrors({ general: 'البريد أو كلمة المرور غير صحيحة.' });
     }, 1000);
   };
 
@@ -46,11 +42,11 @@ const LoginPage = () => {
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
       >
-        <h2 className="text-2xl font-semibold mb-4">Login</h2>
+        <h2 className="text-2xl font-semibold mb-4">تسجيل الدخول</h2>
 
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email
+            البريد الإلكتروني
           </label>
           <input
             type="email"
@@ -67,11 +63,10 @@ const LoginPage = () => {
 
         <div className="mb-4">
           <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-            Password
+            كلمة المرور
           </label>
           <input
             type="password"
-            id="password"
             id="password"
             placeholder="••••••••"
             value={formData.password}
@@ -83,7 +78,6 @@ const LoginPage = () => {
           />
         </div>
 
-        {/* Display general errors if any */}
         {errors.general && (
           <p className="text-red-500 text-sm mb-4">{errors.general}</p>
         )}
@@ -91,9 +85,9 @@ const LoginPage = () => {
         <button
           type="submit"
           className="w-full bg-black text-white py-2 rounded-md"
-          disabled={isLoading} // Disable button while loading
+          disabled={isLoading}
         >
-          {isLoading ? 'Logging in...' : 'Login'}
+          {isLoading ? 'جار تسجيل الدخول...' : 'دخول'}
         </button>
       </form>
     </div>
