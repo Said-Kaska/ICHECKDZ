@@ -10,29 +10,25 @@ const LoginPage = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState({ general: '' }); // State for general error messages
+  const [errors, setErrors] = useState({ general: '' });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setErrors({ general: '' }); // Clear any previous errors on new submission
+    setErrors({ general: '' });
 
-    // Basic client-side validation
     if (!formData.email || !formData.password) {
       setErrors({ general: 'يرجى إدخال البريد وكلمة المرور.' });
       setIsLoading(false);
       return;
     }
 
-    // Simulate API call
+    // 👇 نحا التنقل المكرر وخلي غير هذا
     setTimeout(() => {
       setIsLoading(false);
 
-      // Simulate successful login
-      navigate('/profile'); // ✅ هنا التنقل بعد الدخول الناجح
-
-      // إذا حبيت تحاكي فشل الدخول بدلًا من النجاح:
-      // setErrors({ general: 'البريد أو كلمة المرور غير صحيحة.' });
+      // ✅ هنا ندير التنقل الحقيقي بعد التحقق (وهمي حاليا)
+      navigate('/profile');
     }, 1000);
   };
 
@@ -87,7 +83,7 @@ const LoginPage = () => {
           className="w-full bg-black text-white py-2 rounded-md"
           disabled={isLoading}
         >
-          {isLoading ? 'جار تسجيل الدخول...' : 'دخول'}
+          {isLoading ? 'جارٍ الدخول...' : 'دخول'}
         </button>
       </form>
     </div>
