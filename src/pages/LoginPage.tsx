@@ -29,6 +29,8 @@ const LoginPage = () => {
     // with your actual authentication API call (e.g., fetch, axios, or a Supabase/Firebase auth method).
     setTimeout(() => {
       setIsLoading(false);
+        router.push('/dashboard'); // غيّرها حسب اسم صفحتك بعد الدخول
+}, 1000);
 
       // Simulate successful login
       navigate('/profile');
